@@ -38,7 +38,7 @@
 </head>
 
 <body>
-
+  {% block header %}
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
     <div class="container d-flex align-items-center">
@@ -46,7 +46,7 @@
       <h1 class="logo me-auto"><a href="index.html">Arsha</a></h1>
       <!-- Uncomment below if you prefer to use an image logo -->
       <!-- <a href="index.html" class="logo me-auto"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
-
+      {% block navbar %}
       <nav id="navbar" class="navbar">
         <ul>
           <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
@@ -76,10 +76,12 @@
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
-
+      {% endblock navbar %}
     </div>
   </header><!-- End Header -->
+  {% endblock header %}
 
+  {% block hero %}
   <!-- ======= Hero Section ======= -->
   <section id="hero" class="d-flex align-items-center">
 
@@ -100,9 +102,10 @@
     </div>
 
   </section><!-- End Hero -->
+  {% endblock hero %}
 
   <main id="main">
-
+    {% block content %}
     <!-- ======= Cliens Section ======= -->
     <section id="cliens" class="cliens section-bg">
       <div class="container">
@@ -673,7 +676,7 @@
         </div>
 
         <div class="row">
-
+          {% block contact_infos %}
           <div class="col-lg-5 d-flex align-items-stretch">
             <div class="info">
               <div class="address">
@@ -698,7 +701,7 @@
             </div>
 
           </div>
-
+          {% endblock contact_infos %}
           <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
             <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
@@ -732,9 +735,10 @@
 
       </div>
     </section><!-- End Contact Section -->
-
+  {% endblock content %}
   </main><!-- End #main -->
 
+  {% block footer %}
   <!-- ======= Footer ======= -->
   <footer id="footer">
 
@@ -818,6 +822,7 @@
       </div>
     </div>
   </footer><!-- End Footer -->
+  {% endblock footer %}
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>

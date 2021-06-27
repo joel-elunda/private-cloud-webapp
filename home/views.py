@@ -1,4 +1,7 @@
 from django.shortcuts import render
+from user.forms import UserLogin
+from django.urls import reverse
 
 def home(request):
-    return render(request, 'index.html')
+    form = UserLogin()
+    return render(request, 'index.html' )
