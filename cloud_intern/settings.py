@@ -57,7 +57,7 @@ ROOT_URLCONF = 'cloud_intern.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [BASE_DIR / 'templates'],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -122,26 +122,18 @@ USE_TZ = True
 
 
 STATIC_URL = '/static/'
-STATIC_ROOT = '/static/'
-
 STATICFILES_DIRS = [
-
     # Static fils relatives to cloud-space templates
-    BASE_DIR / 'static/assets/', 
-    BASE_DIR / 'static/contactform/', 
-    BASE_DIR / 'static/css/', 
-    BASE_DIR / 'static/fonts/', 
-    BASE_DIR / 'static/img/', 
-    BASE_DIR / 'static/js/',  
-
-    # Static files relatives to cloud-space templates
-    BASE_DIR / 'static/assets/',  
-    BASE_DIR / 'static/assets/css/',  
-    BASE_DIR / 'static/assets/img/',  
-    BASE_DIR / 'static/assets/js/',  
-    BASE_DIR / 'static/assets/vendor/',  
-    BASE_DIR / 'static/forms/',  
+    'static',
+    'static/cloud/'
+    'static/cloud/assets/css',  
+    'static/cloud/assets/img',  
+    'static/cloud/assets/js',  
+    'static/cloud/assets/vendor',  
 ]
 
 LOGIN_URL = 'user:login'
 MEDIA_URL = '/media/' 
+
+
+DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

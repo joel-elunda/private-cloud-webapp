@@ -1,8 +1,6 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
-from django.views.generic.edit import DeleteView
- 
+from django.views.generic.edit import CreateView, DeleteView
+from django.urls import reverse_lazy 
 
 class LoginCreateView(CreateView):
     pass

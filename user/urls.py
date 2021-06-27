@@ -13,21 +13,20 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """ 
-from django.urls import path, include
+from django.urls import path
 from . import views
-from cloud.views import (
-    
-    # User Views
-    LoginCreateView, 
-    RegisterCreateView, 
-    UpdateCreateView
-)
+# from cloud.views import ( 
+#     # User Views
+#     LoginCreateView, 
+#     RegisterCreateView, 
+#     UpdateCreateView
+# )
 
-app_name = 'cloud'
+app_name = 'user'
 
 urlpatterns = [
     # URLs relatives to user features
-    path('user/', LoginCreateView.as_view(), name='login'),
-    path('register/', RegisterCreateView.as_view(), name='regiser'),
-    path('update/', UpdateCreateView.as_view(), name='update'), 
+    # path('user/', LoginCreateView.as_view(), name='login'),
+    # path('register/', RegisterCreateView.as_view(), name='regiser'),
+    # path('update/', UpdateCreateView.as_view(), name='update'), 
 ]  
