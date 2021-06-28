@@ -14,47 +14,18 @@
 
         <div class="row">
   
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-          {% if form.errors %}
-            <p>Login ou mot de passe incorrect. Veuillez réessayer.</p>
-            {% endif %}
-
-            {% if next %}
-                {% if user.is_authenticated %}
-                <p>Votre compte n'a pas accès à cette page. Pour procéder, veuillez 
-                vous connecter avec un compte ayant accès.</p>
-                {% else %}
-                <p>Connectez-vous sur cette page.</p>
-                {% endif %}
-            {% endif %}
-
+          <div class="col-lg-6 mt-5 mt-lg-0 d-flex align-items-stretch"> 
             <form method="post" action="{% url 'user:login' %}" role="form" class="php-email-form" novalidate>
-            {% csrf_token %}
-            <div class="form-group">
-                <label for="name">{{ form.username.label_tag }}</label>
-                {{ form.username }}
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-            <table>
-            <tr>
-                <td>{{ form.username.label_tag }}</td>
-                <td>{{ form.username }}</td>
-            </tr>
-            <tr>
-                <td>{{ form.password.label_tag }}</td>
-                <td>{{ form.password  }}</td>
-            </tr>
-            </table>
+              {% csrf_token %}
+              {% include 'layouts/form.html' with form=form %}
 
-            <input type="submit" value="login">
-            <input type="hidden" name="next" value="{{ next }}">
+              <input class="btn btn-sm btn-block btn-primary" type="submit" value="Se connecter">
+              <input type="hidden" name="next" value="{{ next }}">
+              <p><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
             </form>
 
             {# Assumes you setup the password_reset view in your URLconf #}
-            <p><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
+            {% comment %} <p><a href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p> {% endcomment %}
             {% comment %} <form action="forms/contact.php" method="post" role="form" class="php-email-form">
               <div class="row">
                 <div class="form-group col-md-6">

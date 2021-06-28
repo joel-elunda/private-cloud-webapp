@@ -12,23 +12,36 @@
   </div>
 {% endif %}
 
+{% if form.errors %}
+<p>Login ou mot de passe incorrect. Veuillez réessayer.</p>
+{% endif %}
+
+{% if next %}
+    {% if user.is_authenticated %}
+    <p>Votre compte n'a pas accès à cette page. Pour procéder, veuillez 
+    vous connecter avec un compte ayant accès.</p>
+    {% else %}
+    <p>Connectez-vous sur cette page.</p>
+    {% endif %}
+{% endif %}
+
 {% for field in form.visible_fields %}
   <div class="form-group">
     {{ field.label_tag }}
 
     {% if form.is_bound %}
       {% if field.errors %}
-        {% render_field field class="form-control is-invalid" %}
+        {% render_field field class="form-control form-control-sm is-invalid" %}
         {% for error in field.errors %}
           <div class="invalid-feedback">
             {{ error }}
           </div>
         {% endfor %}
       {% else %}
-        {% render_field field class="form-control is-valid" %}
+        {% render_field field class="form-control form-control-sm is-valid" %}
       {% endif %}
     {% else %}
-      {% render_field field class="form-control" %}
+      {% render_field field class="form-control form-control-sm" %}
     {% endif %}
 
     {% if field.help_text %}

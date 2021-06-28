@@ -29,18 +29,18 @@ def login(request):
         pass  # does nothing, just trigger the validation
     else:
         form = UserLogin()
-    return render(request, 'login.html')
+    return render(request, 'login.html', {'form': form})
 
 
 
 
 def home(request):
     if request.method == 'POST':
-        form = ContactForm(request.POST)
+        form = UserLogin(request.POST)
         if form.is_valid():
             pass  # does nothing, just trigger the validation
     else:
-        form = ContactForm()
+        form = UserLogin()
     return render(request, 'index.html', {'form': form})
 
 class LoginCreateView(CreateView):
