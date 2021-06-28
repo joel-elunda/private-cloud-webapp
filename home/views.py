@@ -4,4 +4,4 @@ from django.urls import reverse
 
 def home(request):
     form = UserLogin()
-    return render(request, 'index.html' )
+    return render(request, 'main.html' )
