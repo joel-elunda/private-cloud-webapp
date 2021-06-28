@@ -4,26 +4,29 @@
   {{ hidden_field }}
 {% endfor %}
 
+{% comment %} {% if form.non_field_errors %}
+  <div class="alert alert-danger" role="alert">
+    {% for error in form.non_field_errors %}
+      <small>{{ error }}</small>
+    {% endfor %}
+  </div>
+{% endif %} {% endcomment %}
+
 {% if form.non_field_errors %}
   <div class="alert alert-danger" role="alert">
     {% for error in form.non_field_errors %}
-      {{ error }}
+      <small>Login ou mot de passe incorrect. Veuillez réessayer.</small>
     {% endfor %}
   </div>
-{% endif %}
-
-{% if form.errors %}
-<p>Login ou mot de passe incorrect. Veuillez réessayer.</p>
-{% endif %}
-
-{% if next %}
+{% endif %} 
+{% comment %} {% if next %}
     {% if user.is_authenticated %}
     <p>Votre compte n'a pas accès à cette page. Pour procéder, veuillez 
     vous connecter avec un compte ayant accès.</p>
     {% else %}
     <p>Connectez-vous sur cette page.</p>
     {% endif %}
-{% endif %}
+{% endif %} {% endcomment %}
 
 {% for field in form.visible_fields %}
   <div class="form-group">
@@ -47,5 +50,6 @@
     {% if field.help_text %}
       <small class="form-text text-muted">{{ field.help_text }}</small>
     {% endif %}
+    
   </div>
 {% endfor %}
