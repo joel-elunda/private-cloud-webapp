@@ -26,8 +26,8 @@ def email_check(user):
 
 
 
-@login_required(login_url='/accounts/login/')
 @user_passes_test(email_check, login_url='/accounts/login/')
+@login_required(login_url='/accounts/login/')
 def login(request):
     username = request.POST['username']
     password = request.POST['password']

@@ -32,8 +32,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'cloud.apps.CloudConfig',
-    'user.apps.UserConfig',
-    'home.apps.HomeConfig',
+    'user.apps.UserConfig', 
     'widget_tweaks',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -121,6 +120,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
+LOGIN_URL = 'user:login'
+MEDIA_URL = '/media/' 
 
 STATIC_URL = '/static/'
 STATICFILES_DIRS = [
@@ -133,8 +134,6 @@ STATICFILES_DIRS = [
     'static/cloud/assets/vendor',  
 ]
 
-LOGIN_URL = 'user:login'
-MEDIA_URL = '/media/' 
 
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'

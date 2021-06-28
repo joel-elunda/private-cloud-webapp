@@ -1,13 +1,13 @@
 from django.shortcuts import render
-from django.views.generic.edit import CreateView
-from django.urls import reverse_lazy
-from django.views.generic.edit import DeleteView
+from django.views.generic.edit import CreateView,  DeleteView
+from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect, request
 from .forms import UploadFileForm
+from django.contrib.auth.decorators import  login_required 
 
-
-def home():
-    return render(request, 'index.html')
+@login_required
+def home(request):
+    return render(request, 'main.html')
 
 def handle_uploaded_file(f):
     with open('some/file/name.txt', 'wb+') as destination:
