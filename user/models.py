@@ -5,14 +5,15 @@ from django.utils.translation import gettext as _
 
 class UserModel(models.Model):
     name = models.CharField(max_length=50)
-    email = models.EmailField(max_length=100)
+    email = models.EmailField(max_length=100, blank=True, null=True, )
     # password = models.
     slug = models.SlugField(max_length=50, unique=True,  help_text='Unique value for product page URL, created from name.')
-    bio = models.TextField()
-    photo = models.ImageField(upload_to='static/users_photos/')
+    password = models.CharField(max_length=255, blank=True, null=True,)
+    bio = models.TextField(blank=True, null=True, )
+    photo = models.ImageField(blank=True,  null=True, upload_to='static/users_photos/')
     is_active = models.BooleanField(default=True)
-    meta_keywords = models.CharField('Meta Keywords', max_length=255, help_text='Comma-delimited set of SEO keywords for meta tag')
-    meta_description = models.CharField("Meta Description", max_length=255,   help_text='Content for description meta tag')
+    meta_keywords = models.CharField('Meta Keywords', blank=True,   null=True, max_length=255, help_text='Comma-delimited set of SEO keywords for meta tag')
+    meta_description = models.CharField("Meta Description", blank=True,  null=True, max_length=255,   help_text='Content for description meta tag')
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     

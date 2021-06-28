@@ -10,6 +10,7 @@
   <meta content="" name="description">
   <meta content="" name="keywords">
 
+  {% block links %}
   <!-- Favicons -->
   <link href="{% static 'cloud/assets/img/favicon.png' %}" rel="icon">
   <link href="{% static 'cloud/assets/img/apple-touch-icon.png' %}" rel="apple-touch-icon">
@@ -31,6 +32,7 @@
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js"></script>
+  {% endblock links %}
   {% block style %} {% endblock style %}
   <!-- =======================================================
   * Template Name: Arsha - v4.3.0
@@ -41,6 +43,7 @@
 </head>
 
 <body>
+  {% block body %}
   {% block header %}
   <!-- ======= Header ======= -->
   <header id="header" class="fixed-top ">
@@ -829,7 +832,7 @@
 
   <div id="preloader"></div>
   <a href="#" class="back-to-top d-flex align-items-center justify-content-center"><i class="bi bi-arrow-up-short"></i></a>
-
+  {% block scripts %}
   <!-- Vendor JS Files -->
   <script src="{% static 'cloud/assets/vendor/aos/aos.js' %}"></script>
   <script src="{% static 'cloud/assets/vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
@@ -841,7 +844,8 @@
 
   <!-- Template Main JS File -->
   <script src="{% static 'cloud/assets/js/main.js' %}"></script>
-
+  {% endblock scripts %}
+  {% endblock body %}
 </body>
 
 </html>
