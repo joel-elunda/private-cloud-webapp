@@ -1,14 +1,14 @@
 from django import forms
-from user.models import UserModel
+from django.contrib.auth.models import User
 
 class UserLogin(forms.Form):
     class Meta:
-        model = UserModel
+        model = User
         fields = ['email', 'password']
 
 class UserRegister(forms.Form):
     class Meta:
-        model = UserModel
+        model = User
         fields = ['name', 'email', 'password']
 
 class ContactForm(forms.Form):

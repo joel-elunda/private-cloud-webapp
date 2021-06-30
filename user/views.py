@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import PasswordChangeForm
-from django.shortcuts import render
+from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, DeleteView
 from django.urls import reverse
 from django.contrib.auth.decorators import user_passes_test, login_required 
@@ -23,9 +23,7 @@ def password_change(request):
     
 def email_check(user):
     return user.email.endswith('@example.com')
-
-
-
+ 
 @user_passes_test(email_check, login_url='/accounts/login/')
 @login_required(login_url='/accounts/login/')
 def login(request):
@@ -39,21 +37,11 @@ def login(request):
         if request.method == 'POST':
             form = UserLogin(request.POST)
         if form.is_valid():
-            pass  # does nothing, just trigger the validation
+            redirect(reverse('user:login'))
         else:
             form = UserLogin()
     return render(request, 'login.html', {'form': form})
  
-
-def home(request):
-    if request.method == 'POST':
-        form = UserLogin(request.POST)
-        if form.is_valid():
-            pass  # does nothing, just trigger the validation
-    else:
-        form = UserLogin()
-    return render(request, 'index.html', {'form': form})
-
  
 
 class UpdateCreateView(CreateView):
