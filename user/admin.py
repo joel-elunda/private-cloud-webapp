@@ -1,10 +1,10 @@
 from django.contrib import admin
-from user.models import Profil
+from user.models import Profile
 
-class ProfilAdmin(admin.ModelAdmin):
+class ProfileAdmin(admin.ModelAdmin):
     ordering = ['-updated_at']
     search_fields = ['username']
     # prepopulated_fields = {'slug': ('username',) } 
     # prepopulated_fields = {'user.password': ('username',) } 
 
-admin.site.register(Profil, ProfilAdmin)
+admin.site.register(Profile, ProfileAdmin)
