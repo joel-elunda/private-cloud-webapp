@@ -31,18 +31,15 @@ def login(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user) 
-        return render(request, 'index.html')
     else:
-        if request.method == 'POST':
-            form = UserLogin(request.POST)
-        if form.is_valid():
-            redirect(reverse('user:login'))
-        else:
-            form = UserLogin()
+        form = UserLogin()
     return render(request, 'login.html', {'form': form})
  
 def home(request):
     return render(request, 'index.html')
+
+def profile(request):
+    return render(request, 'profile.html')
 
 class UpdateCreateView(CreateView):
     # model = Author

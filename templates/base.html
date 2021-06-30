@@ -79,7 +79,12 @@
             </ul> {% endcomment %}
           </li>
           <li><a class="nav-link scrollto" href="#contact">Contact</a></li>
-          <li><a class="getstarted scrollto" href="{% url 'user:login' %}">Se connecter</a></li>
+          {% if request.user.is_authenticated %}
+            <li><a class="getstarted scrollto" href="{% url 'user:profile' %}">{{user.username}}</a></li>
+            <li><a class="getstarted scrollto" href="{% url 'user:logout' %}">Se déconnecter</a></li>
+          {% else %}
+            <li><a class="getstarted scrollto" href="{% url 'user:login' %}">Se onnecter</a></li> 
+            {% endif %}
         </ul>
         <i class="bi bi-list mobile-nav-toggle"></i>
       </nav><!-- .navbar -->
