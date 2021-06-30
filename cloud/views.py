@@ -5,6 +5,11 @@ from django.http import HttpResponseRedirect, request
 from .forms import UploadFileForm
 from django.contrib.auth.decorators import  login_required 
 
+
+def upload_file(request):
+    return render(request)
+
+    
 @login_required
 def home(request):
     return render(request, 'main.html')
@@ -85,30 +90,4 @@ class FileFieldView(FormView):
             return self.form_valid(form)
         else:
             return self.form_invalid(form)
-'''
-Fonctionnalités
-===============
-
-    1. Catégoriser les fichiers
-    2. Créer des dossiers sécurisés selons les catégories ou le niveau de confidentialité 
-    ...
-    5. Lire les fichiers
-    6. Supprimer les fichiers
-    7. Protéger les fichiers où dossiers par mot de passer
-    8. Cripter les fichiers
-    9. Bloquer l'accès des fichiers confidentiels ou sensibles
-    9. Ajouter aux favoris
-    10. Afficher l'espace de stockage disponible ou restant
-
-    11. Gérer le droit d'accès
-    12. Gérer les utilisateurs
-
-'''
-
-class UploadCreateView(CreateView):
-    pass
-
-class FileDeleteView(DeleteView):
-    # model = Author
-    success_url = reverse_lazy('files-list') 
-
+ 
