@@ -42,7 +42,7 @@ def login(request):
     return render(request, 'login.html', {'form': form})
  
 def home(request):
-    return render(request, 'main.html')
+    return render(request, 'index.html')
 
 class UpdateCreateView(CreateView):
     # model = Author
