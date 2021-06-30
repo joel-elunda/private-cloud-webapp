@@ -21,6 +21,7 @@ app_name = 'user'
 
 urlpatterns = [
     # URLs relatives to user features
+    path('home/', views.home, name='home'),
     path('accounts/', include('django.contrib.auth.urls')),
     path('', auth_views.LoginView.as_view(template_name='login.html'), name="login"),
     # path('register/', RegisterCreateView.as_view(), name='regiser'),

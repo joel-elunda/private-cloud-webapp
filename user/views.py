@@ -11,7 +11,6 @@ from django.contrib.auth import logout
 def logout_view(request):
     logout(request)
 
-
 def password_change(request):
     if request.method == 'POST':
         form = PasswordChangeForm(user=request.user, data=request.POST)
@@ -42,7 +41,8 @@ def login(request):
             form = UserLogin()
     return render(request, 'login.html', {'form': form})
  
- 
+def home(request):
+    return render(request, 'main.html')
 
 class UpdateCreateView(CreateView):
     # model = Author
