@@ -1,10 +1,11 @@
 from django.db import models
 from django.urls import reverse
 from django.utils.translation import gettext as _
-from django.contrib.auth.models import User
+from django.contrib.auth.models import User 
 
-class Profile(models.Model):
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
+class UserProfile(models.Model):
+    
+    user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True, )
     # slug = models.SlugField(max_length=50, unique=True,  help_text='Unique value for product page URL, created from name.')
     bio = models.TextField(blank=True, null=True, )
     photo = models.ImageField(blank=True,  null=True, upload_to='static/users_photos/')
@@ -14,11 +15,6 @@ class Profile(models.Model):
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     
-    class Meta:
-        db_table = 'profils'
-        ordering = ['-created_at']
-        verbose_name = _("Profile")
-        verbose_name_plural = _("Profiles")
 
     def __str__(self):
         return self.user.username
@@ -26,5 +22,11 @@ class Profile(models.Model):
     def __unicode__(self):
         return u"Profile de {0}".format(self.user.username)
 
+    class Meta:
+        ordering = ['-created_at']
+        verbose_name = _("UserProfile")
+        verbose_name_plural = _("UserProfiles")
+ 
+
     def get_absolute_url(self):
-        return reverse("Profile_detail", kwargs={"pk": self.pk})
+        return reverse("UserProfile_detail", kwargs={"pk": self.pk})

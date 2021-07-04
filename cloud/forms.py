@@ -1,8 +1,11 @@
 from django import forms
+from cloud.models import Upload
+
 
 class UploadFileForm(forms.Form):
-    title = forms.CharField(max_length=50)
-    file = forms.FileField()
+    class Meta:
+        model = Upload
+        fields = ['name', 'file']
 
 
 class FileFieldForm(forms.Form):
@@ -15,4 +18,4 @@ class ModelFormWithFileField(forms.Form):
  
 
 class FileFieldForm(forms.Form):
-    pass
+    pass 
