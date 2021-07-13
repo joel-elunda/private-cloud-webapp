@@ -122,7 +122,7 @@ USE_TZ = True
 
 LOGIN_URL = 'user:login'
 MEDIA_URL = '/media/' 
-LOGIN_REDIRECT_URL = 'user:home'
+LOGIN_REDIRECT_URL = 'cloud:main'
 LOGOUT_REDIRECT_URL = 'user:login'
 
 STATIC_URL = '/static/'

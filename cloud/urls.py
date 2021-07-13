@@ -23,6 +23,7 @@ app_name = 'cloud'
 urlpatterns = [
     #URLs relatives to cloud features
     path('', views.home, name='home'),
+    path('about/', TemplateView.as_view(template_name='index.html'), name='about'),
     path('upload/', views.upload, name='upload'),
     path('main/', TemplateView.as_view(template_name='main.html'), name='main'),
 ]  
