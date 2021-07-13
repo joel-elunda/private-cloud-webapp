@@ -13,7 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.urls import include, path
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """ 
+<<<<<<< HEAD
 from django.urls import path
+=======
+from django.urls import path, include
+>>>>>>> ebdc74252cb9889a844949a51698184cb16ee221
 from django.views.generic.base import TemplateView
 from . import views
 
@@ -23,6 +27,11 @@ app_name = 'cloud'
 urlpatterns = [
     #URLs relatives to cloud features
     path('', views.home, name='home'),
+<<<<<<< HEAD
     path('upload/', views.upload, name='upload'),
     path('main/', TemplateView.as_view(template_name='main.html'), name='main'),
+=======
+    path('upload_file/', views.upload_file, name='upload_file'),
+    path('upload/', TemplateView.as_view(template_name='upload.html'), name='upload')
+>>>>>>> ebdc74252cb9889a844949a51698184cb16ee221
 ]  

@@ -15,6 +15,7 @@
           <p>Un endroit pour tous vos fichiers. <br> Tous les types de fichier sont pris en charge sur votre espace privé.</p>
         </div>
 
+<<<<<<< HEAD
         <div class="row  d-flex justify-content-center"> 
           <div class="col-md-5">
               <form method="post" action="{% url 'cloud:upload' %}" role="form" class="email-form" >
@@ -32,10 +33,52 @@
                 {% endcomment %}
               </form>
           </div>
+=======
+        <div class="row ">
+          {% block contact_infos %}
+          <div class="col-lg-5">
+             <form action="{% url 'cloud:upload_file' %}" method="post" role="form" class="php-email-form">
+              <div class="row">
+                <div class="form-group col-md-6">
+                  <label for="name">Your Name</label>
+                  <input type="text" name="name" class="form-control" id="name" required>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="name">Your Email</label>
+                  <input type="email" class="form-control" name="email" id="email" required>
+                </div>
+              </div>
+              <div class="form-group">
+                <label for="name">Subject</label>
+                <input type="text" class="form-control" name="subject" id="subject" required>
+              </div>
+              <div class="form-group">
+                <label for="name">Message</label>
+                <textarea class="form-control" name="message" rows="10" required></textarea>
+              </div>
+              <div class="my-3">
+                <div class="loading">Loading</div>
+                <div class="error-message"></div>
+                <div class="sent-message">Your message has been sent. Thank you!</div>
+              </div>
+              <div class="text-center"><button type="submit">Send Message</button></div>
+            </form>
+
+          </div>
+          {% endblock contact_infos %}
+          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
+           
+          </div>
+
+>>>>>>> ebdc74252cb9889a844949a51698184cb16ee221
         </div>
 
       </div>
     </section><!-- End Contact Section -->
+<<<<<<< HEAD
 {% endblock content %}
 
 {% block footer %}{% endblock footer %}
+=======
+{% endblock content %}
+>>>>>>> ebdc74252cb9889a844949a51698184cb16ee221
