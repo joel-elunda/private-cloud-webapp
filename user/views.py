@@ -1,4 +1,5 @@
 from django.contrib.auth.forms import PasswordChangeForm
+from django.http.response import HttpResponse
 from django.shortcuts import redirect, render
 from django.views.generic.edit import CreateView, DeleteView
 from django.urls import reverse
@@ -31,6 +32,7 @@ def login(request):
     user = authenticate(request, username=username, password=password)
     if user is not None:
         login(request, user) 
+        return render(request, 'profile.html', {'user': user})
     else:
         form = UserLogin()
     return render(request, 'login.html', {'form': form})

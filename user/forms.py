@@ -1,15 +1,15 @@
 from django import forms
 from django.contrib.auth.models import User
 
-class UserLogin(forms.Form):
+class UserLogin(forms.ModelForm):
     class Meta:
         model = User
         fields = ['email', 'password']
 
-class UserRegister(forms.Form):
+class UserRegister(forms.ModelForm):
     class Meta:
         model = User
-        fields = ['name', 'email', 'password']
+        fields = ['username', 'email', 'password']
 
 class ContactForm(forms.Form):
     name = forms.CharField(max_length=30)

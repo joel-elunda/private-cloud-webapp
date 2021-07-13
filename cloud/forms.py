@@ -1,10 +1,10 @@
-from django import forms
+from django import forms 
 from cloud.models import Upload
 
-class UploadFileForm(forms.Form):
+class UploadFileForm(forms.ModelForm):
     class Meta:
         model = Upload
-        fields = ['name']
+        fields = ['name', 'file']
 
 class FileFieldForm(forms.Form):
     file_field = forms.FileField(widget=forms.ClearableFileInput(attrs={'multiple': True}))
