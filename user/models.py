@@ -3,7 +3,7 @@ from django.urls import reverse
 from django.utils.translation import gettext as _
 from django.contrib.auth.models import User 
 
-class UserProfile(models.Model):
+class Profile(models.Model):
     
     user = models.OneToOneField(User, on_delete=models.CASCADE, blank=True, null=True, )
     # slug = models.SlugField(max_length=50, unique=True,  help_text='Unique value for product page URL, created from name.')
@@ -23,10 +23,11 @@ class UserProfile(models.Model):
         return u"Profile de {0}".format(self.user.username)
 
     class Meta:
+        db_table = 'user_profile'
         ordering = ['-created_at']
-        verbose_name = _("UserProfile")
-        verbose_name_plural = _("UserProfiles")
+        verbose_name = _("Profile")
+        verbose_name_plural = _("Profiles")
  
 
     def get_absolute_url(self):
-        return reverse("UserProfile_detail", kwargs={"pk": self.pk})
+        return reverse("Profile_detail", kwargs={"pk": self.pk})

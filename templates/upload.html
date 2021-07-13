@@ -15,44 +15,27 @@
           <p>Un endroit pour tous vos fichiers. <br> Tous les types de fichier sont pris en charge sur votre espace privé.</p>
         </div>
 
-        <div class="row ">
-          {% block contact_infos %}
-          <div class="col-lg-5">
-             <form action="{% url 'cloud:upload_file' %}" method="post" role="form" class="php-email-form">
-              <div class="row">
-                <div class="form-group col-md-6">
-                  <label for="name">Your Name</label>
-                  <input type="text" name="name" class="form-control" id="name" required>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="name">Your Email</label>
-                  <input type="email" class="form-control" name="email" id="email" required>
-                </div>
-              </div>
-              <div class="form-group">
-                <label for="name">Subject</label>
-                <input type="text" class="form-control" name="subject" id="subject" required>
-              </div>
-              <div class="form-group">
-                <label for="name">Message</label>
-                <textarea class="form-control" name="message" rows="10" required></textarea>
-              </div>
-              <div class="my-3">
-                <div class="loading">Loading</div>
-                <div class="error-message"></div>
-                <div class="sent-message">Your message has been sent. Thank you!</div>
-              </div>
-              <div class="text-center"><button type="submit">Send Message</button></div>
-            </form>
+        <div class="row  d-flex justify-content-center"> 
+          <div class="col-md-5">
+              <form method="post" action="{% url 'cloud:upload' %}" role="form" class="email-form" >
+                {% csrf_token %}
+                {{ form }}
+                {% include 'layouts/form.html' with form=form %}
 
+                <button type="submit" class="btn btn-primary btn-sm btn-block mt-2">Charger</button> 
+                <input type="hidden" name="next" value="{{ next }}">
+                {% comment %}                 
+                <div class="d-flex justify-content-between mt-5"> 
+                  <p class="mt-3"><a  href="{% url 'password_reset' %}">Mot de passe oublié ?</a></p>
+                  <p class="mt-3"><a  href="{% url 'password_reset' %}">Créer un compte ?</a></p> 
+                </div>
+                {% endcomment %}
+              </form>
           </div>
-          {% endblock contact_infos %}
-          <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-           
-          </div>
-
         </div>
 
       </div>
     </section><!-- End Contact Section -->
 {% endblock content %}
+
+{% block footer %}{% endblock footer %}

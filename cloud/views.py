@@ -2,12 +2,9 @@ from django.shortcuts import render
 from django.views.generic.edit import CreateView,  DeleteView
 from django.urls import reverse_lazy, reverse
 from django.http import HttpResponseRedirect, request
-from .forms import UploadFileForm
+from cloud.forms import UploadFileForm
 from django.contrib.auth.decorators import  login_required 
 
-
-def upload_file(request):
-    return render(request)
 
     
 @login_required
@@ -15,19 +12,21 @@ def home(request):
     return render(request, 'main.html')
 
 def handle_uploaded_file(f):
-    with open('some/file/name.txt', 'wb+') as destination:
+    with open('static/files/name.txt', 'wb+') as destination:
         for chunk in f.chunks():
             destination.write(chunk)
 
 # Imaginary function to handle an uploaded file.
 # from somewhere import handle_uploaded_file
 
-def upload_file(request):
+@login_required
+def upload(request):
+    form = UploadFileForm()
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            handle_uploaded_file(request.FILES['file'])
-            return HttpResponseRedirect('/success/url/')
+            # handle_uploaded_file(request.FILES['file'])
+            return HttpResponseRedirect('/cloud/main/')
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
@@ -41,16 +40,16 @@ def upload_file(request):
 
 from cloud.forms import ModelFormWithFileField
 
-def upload_file(request):
-    if request.method == 'POST':
-        form = ModelFormWithFileField(request.POST, request.FILES)
-        if form.is_valid():
-            # file is saved
-            form.save()
-            return HttpResponseRedirect('/success/url/')
-    else:
-        form = ModelFormWithFileField()
-    return render(request, 'upload.html', {'form': form})
+# def upload_file(request):
+#     if request.method == 'POST':
+#         form = ModelFormWithFileField(request.POST, request.FILES)
+#         if form.is_valid():
+#             # file is saved
+#             form.save()
+#             return HttpResponseRedirect('/success/url/')
+#     else:
+#         form = ModelFormWithFileField()
+#     return render(request, 'upload.html', {'form': form})
 
 
 
@@ -60,16 +59,16 @@ def upload_file(request):
  
 from cloud.models import ModelWithFileField
 
-def upload_file(request):
-    if request.method == 'POST':
-        form = UploadFileForm(request.POST, request.FILES)
-        if form.is_valid():
-            instance = ModelWithFileField(file_field=request.FILES['file'])
-            instance.save()
-            return HttpResponseRedirect('/success/url/')
-    else:
-        form = UploadFileForm()
-    return render(request, 'upload.html', {'form': form})
+# def upload_file(request):
+#     if request.method == 'POST':
+#         form = UploadFileForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             instance = ModelWithFileField(file_field=request.FILES['file'])
+#             instance.save()
+#             return HttpResponseRedirect('/success/url/')
+#     else:
+#         form = UploadFileForm()
+#     return render(request, 'upload.html', {'form': form})
 
 
 from django.views.generic.edit import FormView
