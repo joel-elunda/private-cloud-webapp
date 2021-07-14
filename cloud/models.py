@@ -20,9 +20,10 @@ class Upload(models.Model):
         db_table = 'uploads'
         verbose_name = _("Upload")
         verbose_name_plural = _("Uploads")
+ 
 
     def __str__(self):
-        return '%s %s' % (self.name, self.description)
+        return '%s %s %s' % (self.file, self.name, self.updated_at)
 
     def get_absolute_url(self):
         return reverse("Upload_detail", kwargs={"pk": self.pk})

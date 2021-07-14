@@ -6,7 +6,20 @@ from cloud.forms import UploadFileForm
 from django.contrib.auth.decorators import  login_required 
 
 
-    
+from cloud.forms import ModelFormWithFileField
+
+# def upload_file(request):
+#     if request.method == 'POST':
+#         form = ModelFormWithFileField(request.POST, request.FILES)
+#         if form.is_valid():
+#             # file is saved
+#             form.save()
+#             return HttpResponseRedirect('/success/url/')
+#     else:
+#         form = ModelFormWithFileField()
+#     return render(request, 'upload.html', {'form': form})
+
+
 @login_required
 def home(request):
     return render(request, 'main.html')
@@ -25,8 +38,8 @@ def upload(request):
     if request.method == 'POST':
         form = UploadFileForm(request.POST, request.FILES)
         if form.is_valid():
-            # handle_uploaded_file(request.FILES['file'])
-            return HttpResponseRedirect('/cloud/main/')
+            form.save()
+            return HttpResponseRedirect('cloud:main')
     else:
         form = UploadFileForm()
     return render(request, 'upload.html', {'form': form})
@@ -38,18 +51,6 @@ def upload(request):
 # L’objet fichier sera enregistré à l’emplacement indiqué par le paramètre 
 # upload_to du champ FileField correspondant lors de l’appel à form.save():
 
-from cloud.forms import ModelFormWithFileField
-
-# def upload_file(request):
-#     if request.method == 'POST':
-#         form = ModelFormWithFileField(request.POST, request.FILES)
-#         if form.is_valid():
-#             # file is saved
-#             form.save()
-#             return HttpResponseRedirect('/success/url/')
-#     else:
-#         form = ModelFormWithFileField()
-#     return render(request, 'upload.html', {'form': form})
 
 
 

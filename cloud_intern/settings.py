@@ -134,6 +134,14 @@ STATICFILES_DIRS = [
     'static/cloud/assets/img',  
     'static/cloud/assets/js',  
     'static/cloud/assets/vendor',  
+
+    # Static fils relatives to main-space templates
+    'static/main/',
+    'static/css/',
+    'static/js/',
+    'static/plugins/',
+    'static/premium/',  
+
 ]
 
 
